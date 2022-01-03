@@ -1,0 +1,91 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> command
+Rule 1     command -> COMMAND_SIMPLE
+Rule 2     command -> COMMAND_SQ
+Rule 3     command -> COMMAND_DQ
+Rule 4     pane -> command
+Rule 5     pane -> ( command )
+Rule 6     pane -> ( command , )
+Rule 7     pane -> NUMBER
+Rule 8     pane -> ( , NUMBER )
+Rule 9     pane -> PERCENT
+Rule 10    pane -> ( , PERCENT )
+Rule 11    pane -> ( command , NUMBER )
+Rule 12    pane -> ( command , PERCENT )
+Rule 13    pane -> column
+Rule 14    pane -> row
+Rule 15    panes -> ,
+Rule 16    panes -> pane ,
+Rule 17    panes -> panes , pane
+Rule 18    panes -> panes ,
+Rule 19    column -> { panes }
+Rule 20    row -> [ panes ]
+
+Terminals, with rules where they appear
+
+(                    : 5 6 8 10 11 12
+)                    : 5 6 8 10 11 12
+,                    : 6 8 10 11 12 15 16 17 18
+COMMAND_DQ           : 3
+COMMAND_SIMPLE       : 1
+COMMAND_SQ           : 2
+NUMBER               : 7 8 11
+PERCENT              : 9 10 12
+[                    : 20
+]                    : 20
+error                : 
+{                    : 19
+}                    : 19
+
+Nonterminals, with rules where they appear
+
+column               : 13
+command              : 4 5 6 11 12 0
+pane                 : 16 17
+panes                : 17 18 19 20
+row                  : 14
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . command
+    (1) command -> . COMMAND_SIMPLE
+    (2) command -> . COMMAND_SQ
+    (3) command -> . COMMAND_DQ
+
+    COMMAND_SIMPLE  shift and go to state 2
+    COMMAND_SQ      shift and go to state 3
+    COMMAND_DQ      shift and go to state 4
+
+    command                        shift and go to state 1
+
+state 1
+
+    (0) S' -> command .
+
+
+
+state 2
+
+    (1) command -> COMMAND_SIMPLE .
+
+    $end            reduce using rule 1 (command -> COMMAND_SIMPLE .)
+
+
+state 3
+
+    (2) command -> COMMAND_SQ .
+
+    $end            reduce using rule 2 (command -> COMMAND_SQ .)
+
+
+state 4
+
+    (3) command -> COMMAND_DQ .
+
+    $end            reduce using rule 3 (command -> COMMAND_DQ .)
+
