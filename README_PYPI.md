@@ -4,7 +4,8 @@ Generate tmux layout string from simple format.
 # Install
 ```
 $ pip3 install panediv-nfw
-$ sudo ln -s ~/.local/bin/panediv /usr/local/bin
+
+$ export PATH=$PATH:~/.local/bin/
 
 ```
 

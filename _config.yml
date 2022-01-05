@@ -1,0 +1,4 @@
+theme: jekyll-theme-cayman
+google_analytics: UA-216270480-3
+plugins:
+  - jekyll-sitemap
