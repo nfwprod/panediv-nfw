@@ -29,7 +29,9 @@ setup(
     tests_require=["pytest", "pytest-cov", "pyyaml", "pytest-datadir"],
     entry_points={
         "console_scripts": [
-            "panediv=panediv.cli:run",
+            "panediv=panediv.panediv:run",
+            "pdv=panediv.pdv:run",
+            "pdc=panediv.pdc:run",
         ]
     },
     classifiers=[
