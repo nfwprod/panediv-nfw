@@ -1,7 +1,7 @@
 """Terminal interface.
 
-
 """
+import os
 import argparse
 import subprocess
 from panediv import export
@@ -100,6 +100,10 @@ def run():
     args = parser.parse_args()
 
     # Run
+    if 'TMUX' in os.environ.keys():
+        print('TMUX already running. Run this script on the outside of tmux.')
+        return
+
     try:
         if args.tmuxinator:
             export_tmuxinator_configuration(args.layout, args.tmuxinator)
